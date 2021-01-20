@@ -54,7 +54,7 @@ var PullDownMenu ={
     }
   }
 }
-vygvegeg
+
 new Vue({
   el:'#app',
   components:{
