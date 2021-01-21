@@ -34,14 +34,26 @@
       props:['taskName','date','genre','index'],
       template:`
         <div class="taskarea">
-          ジャンル：{{genre}}
-          <br>タスク：{{taskName}}
-          <br>投稿日時：{{date}}
-          <br><button>削除</button>
-          <button>完了</button>
-          <button>完了取消</button>
+          <div :class="{'completed':isCompleted}">
+            ジャンル：{{genre}}
+            <br>タスク：{{taskName}}
+            <br>投稿日時：{{date}}
+          </div>
+          <br><button @click="deleteTask(index)">削除</button>
+          <button @click="isCompleted=true">完了</button>
+          <button @click="isCompleted=false">完了取消</button>
         </div>
-      `
+      `,
+      data:function(){
+        return {
+          isCompleted:''
+        }
+      },
+      methods:{
+        deleteTask:function(index){
+          return this.$root.taskList.splice(index,1)
+        }
+      }
     })
 
     new Vue({
