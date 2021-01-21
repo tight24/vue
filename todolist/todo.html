@@ -21,7 +21,7 @@
     <hr>
     <task-component
       v-for="(task,index) in taskList"
-      :taskName="task.taskName"
+      :task-name="task.taskName"
       :date="task.date"
       :genre="task.genre"
       :index="index"
@@ -38,10 +38,10 @@
           <br>タスク：{{taskName}}
           <br>投稿日時：{{date}}
           <br><button>削除</button>
+          <button>完了</button>
           <button>完了取消</button>
         </div>
       `
-
     })
 
     new Vue({
@@ -58,10 +58,11 @@
       },
       computed:{
         isBlank:function(){
-          return this.task===""||this.selectedGenre===""
+          return this.task==="" || this.selectedGenre===""
         }
       },
       methods:{
+        //ボタンクリック時にtaskListに格納
         addTask:function(){
           const day=new Date();
 
@@ -70,6 +71,7 @@
             'genre':this.selectedGenre,
             'date': day.toLocaleString('ja-JP')
           });
+          //追加後のタスク内のコメントを空にする
           this.task="";
         }
       }
