@@ -17,7 +17,7 @@
     <label>タスク</label>
     <textarea v-model="task"></textarea>
     <br><br>
-    <button @click="addTask" :class="{inactive:isBlank}">追加</button>
+    <button @click="addTask" :class="{inActive:isBlank}">追加</button>
     <hr>
     <task-component
       v-for="(task,index) in taskList"
