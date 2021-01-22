@@ -17,6 +17,9 @@
     <label>タスク</label>
     <textarea v-model="task"></textarea>
     <br><br>
+    <input type="radio" name="priority" value="normal" @change="onChange" checked>Normal
+    <input type="radio" name="priority" value="important" @change="onChange">Important
+    <br><br>
     <button @click="addTask" :class="{inActive:isBlank}">追加</button>
     <hr>
     <task-component
@@ -87,6 +90,9 @@
           //追加後のタスク内のコメントを空にする
           this.task="";
           this.selectedGenre="";
+        },
+        onChange:function(){
+
         }
       }
     })
